@@ -96,7 +96,7 @@ h6{
 }
 
 @-webkit-keyframes fadein {
-  from {top: 0; opacity: 0;} 
+  from {top: 0; opacity: 0;}
   to {top: 30px; opacity: 1;}
 }
 
@@ -106,7 +106,7 @@ h6{
 }
 
 @-webkit-keyframes fadeout {
-  from {top: 30px; opacity: 1;} 
+  from {top: 30px; opacity: 1;}
   to {top: 0; opacity: 0;}
 }
 
@@ -117,7 +117,7 @@ h6{
 .btn_style{
     border-radius: 12px;
     width: 50%;
-   
+
 }
   </style>
 
@@ -129,7 +129,7 @@ h6{
     <div class="row">
        <div class="col-md-4"></div>
         <div class="col-md-4">
-            <img src="img/Gf.png" class="img-fluid rounded">
+            <img src="/public/img/GF.png" class="img-fluid rounded">
              <p class="signature">Email Signature Generator <br/>
                 <span>Version: 1.0.1</span>
              </p>
@@ -152,7 +152,7 @@ h6{
                      <button type="submit" class="btn">Generate</button>
                 </div>
 
-                
+
              </form>
         </div>
 
@@ -193,7 +193,7 @@ h6{
 
 
                  <div class="btn-text-center mt-4">
-                     <button type="submit" class="btn" 
+                     <button type="submit" class="btn"
                      onclick="copy_data(select_txt)">Copy</button>
                 </div>
 
@@ -214,7 +214,7 @@ h6{
                            <span>{{ $item->second_no }}</span><br/>
                            <span>{{ $item->email }}</span><br/>
                            <span>{{ $item->website_link }}</span><br/>
-                            
+
                         </fieldset>
 
                     </div>
@@ -226,7 +226,7 @@ h6{
                 </div>
 
                  <div class="btn-text-center mt-4">
-                     <button type="submit" class="btn" 
+                     <button type="submit" class="btn"
                      data-toggle="modal" data-target="#exampleModalCenter"
                      >Send to Mobile</button>
                 </div>
@@ -249,7 +249,7 @@ h6{
             </div>
           </form>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -267,17 +267,17 @@ h6{
  function copy_data(containerid) {
   var range = document.createRange();
   range.selectNode(containerid); //changed here
-  window.getSelection().removeAllRanges(); 
-  window.getSelection().addRange(range); 
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
   document.execCommand("copy");
   window.getSelection().removeAllRanges();
-  
+
   var x = document.getElementById("snackbar");
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 
-    
+
 </script>
 </html>
