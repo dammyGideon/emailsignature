@@ -36,7 +36,10 @@ class EmailController extends Controller
     }
 
     public function sendEmail(Request $request){
+
         $phone_number=$request->input('phone_number');
+
+
         $data = DB::table('email_signatures')->get();
         foreach($data as $response){
             $full_name=$response->full_name;
@@ -47,27 +50,29 @@ class EmailController extends Controller
             $email = $response->email;
             $website_link=$response->website_link;
 
-            try {
-            $sid =  getenv("TWILIO_SID");
-            $token= getenv("TWILIO_TOKEN");
-            $from_twilio=  getenv("TWILIO_FROM");
-            $twilio = new Client($sid, $token);
 
-            $twilio->messages
-                            ->create($phone_number, // to
-                                    [
-                                        "body" =>
-                                        array(
-                                            $full_name,$dept,
-                                            $name_of_companies,
-                                            $first_no,$second_no,
-                                            $email,
-                                            $website_link
-                                        ), "from" =>$from_twilio]
-                            );
+            $message=array(
+                "full_name"=>$full_name,
+                "department"=>$dept,
+                "name_of_company"=>$name_of_companies,
+                "first_number" => $first_no,
+                "second_number"=>$second_no,
+                "email"=>$email,
+                "website"=>$website_link);
 
-                    DB::table('email_signatures')->delete();
-                    return redirect()->back();
+             try {
+
+
+                $account_sid = getenv("TWILIO_SID");
+                $auth_token = getenv("TWILIO_TOKEN");
+                $twilio_number = "MG54dc16354e1159559be93750eb25deb6";
+                $client = new Client($account_sid, $auth_token);
+                $client->messages->create($phone_number,
+                [
+                    'from' => $twilio_number, 'body' => implode("\n ",$message)] );
+
+                DB::table('email_signatures')->delete();
+                return redirect()->back();
             }catch (Exception $e){
                 dd('Error',$e->getMessage());
                 // DB::table('email_signatures')->delete();

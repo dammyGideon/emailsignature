@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image')->default('GF.png');
             $table->string('first_no')->default('(573) 761-5038 Direct');
             $table->string('second_no')->default('(573) 893-3000 Main');
-            $table->string('website_link')->default('https://gravesfoods.com');
+            $table->string('website_link')->default('gravesfoods.com');
             $table->string('youtube')->default('https://youtube.com/v/gravesfoods');
             $table->string('linkedin')->default('https://linkedin.com/gravesfoods');
             $table->string('twitter')->default('https://twitter.com/gravesfoods');

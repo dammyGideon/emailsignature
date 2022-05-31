@@ -55,6 +55,15 @@ input{
         margin-left: 10%;
         height: 6vh;
 }
+
+select{
+        /* padding:10px; */
+        border-radius:10px;
+        width: 80%;
+        margin-left: 10%;
+        margin-left: 10%;
+        height: 6vh;
+}
 hr{
     color:white;
     border: 10px solid white;
@@ -129,7 +138,7 @@ h6{
     <div class="row">
        <div class="col-md-4"></div>
         <div class="col-md-4">
-            <img src="/public/img/GF.png" class="img-fluid rounded">
+            <img src="img/Gf.png" class="img-fluid rounded">
              <p class="signature">Email Signature Generator <br/>
                 <span>Version: 1.0.1</span>
              </p>
@@ -140,7 +149,16 @@ h6{
                     <input type="text" name="full_name"  placeholder="Full Name"  required>
                 </div>
                 <div class=" mt-4">
-                    <input type="text" name="department" placeholder="Department" required>
+                    <select name="department">
+                        <option></option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Warehouse"></option>
+
+                    </select>
+
                 </div>
                 <div class=" mt-4">
                     <input type="text" name="direct"  placeholder="Direct#"    required>
