@@ -30,7 +30,7 @@ class EmailController extends Controller
            $result= EmailSignature::insert($data);
        }
 
-      
+
        return redirect()->back();
 
     }
@@ -46,7 +46,7 @@ class EmailController extends Controller
             $second_no=$response->second_no;
             $email = $response->email;
             $website_link=$response->website_link;
-       
+
             try {
             $sid =  getenv("TWILIO_SID");
             $token= getenv("TWILIO_TOKEN");
@@ -56,7 +56,7 @@ class EmailController extends Controller
             $twilio->messages
                             ->create($phone_number, // to
                                     [
-                                        "body" => 
+                                        "body" =>
                                         array(
                                             $full_name,$dept,
                                             $name_of_companies,
@@ -69,10 +69,11 @@ class EmailController extends Controller
                     DB::table('email_signatures')->delete();
                     return redirect()->back();
             }catch (Exception $e){
-                DB::table('email_signatures')->delete();
-                return redirect()->back()->with('Error',$e->getMessage());
+                dd('Error',$e->getMessage());
+                // DB::table('email_signatures')->delete();
+                // return redirect()->back()->with('Error',$e->getMessage());
             }
-        
+
         }
     }
 }
