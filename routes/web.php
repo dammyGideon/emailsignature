@@ -17,7 +17,7 @@ use App\Models\EmailSignature;
 
 Route::get('/', function () {
     $data=EmailSignature::get();
-    return view('welcome',compact('data',$data));
+    return view('welcome',['data',$data]);
 });
 Route::post('/email',[EmailController::class,'send']);
 Route::post('/send_sms',[EmailController::class,'sendEmail']);
