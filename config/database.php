@@ -50,8 +50,7 @@ return [
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'email_signature'),
             'username' => env('DB_USERNAME', 'gravesfoods'),
-            'password' => env('DB_PASSWORD', '2022ITSD!
-            '),
+            'password' => env('DB_PASSWORD', 'gravesfoods'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
