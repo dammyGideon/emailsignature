@@ -117,8 +117,8 @@ h6{
     <div class="row">
        <div class="col-md-4"></div>
         <div class="col-md-4">
-            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096324/gflogo_header_ybrxxe.png"
-            class="img-fluid rounded">
+            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654112559/gflogo_header2_fdhejj.png"
+            class="img-fluid rounded" style="align-content: center">
 
 
              <p class="signature">Email Signature Generator <br/>
