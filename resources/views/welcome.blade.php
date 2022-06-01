@@ -172,8 +172,8 @@ h6{
                            <span>{{ $item->department }}</span><br/>
                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096325/gflogo_emailsig_y3qsj0.png"
                            style="width:15vh" alt=""/> <br/>
-                           <span>{{ $item->first_no }}</a></span><br/>
-                           <span>{{ $item->second_no }}</span><br/>
+                           <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a> Direct</span><br/>
+                            <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a> Main</span><br/>
                            <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
                            <span><a href="https://gravesfoods.com">{{ $item->website_link }}</a></span><br/>
 
@@ -210,8 +210,8 @@ h6{
                            <span>{{ $item->full_name }}</span><br/>
                            <span>{{ $item->department }}</span><br/>
                             <span>Graves Foods</span> <br/>
-                            <span>{{ $item->first_no }}</span><br/>
-                            <span>{{ $item->second_no }}</span><br/>
+                            <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a> Direct</span><br/>
+                            <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a> Main</span><br/>
                             <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
                             <span><a href="https://gravesfoods.com">{{ $item->website_link }}</a></span><br/>
 

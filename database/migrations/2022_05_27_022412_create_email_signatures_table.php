@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
             $table->string('image')->default('GF.png');
-            $table->string('first_no')->default('(573) 761-5038 Direct');
-            $table->string('second_no')->default('(573) 893-3000 Main');
+            $table->string('first_no')->default('(573) 761-5038');
+            $table->string('second_no')->default('(573) 893-3000');
             $table->string('website_link')->default('gravesfoods.com');
             $table->string('youtube')->default('https://youtube.com/v/gravesfoods');
             $table->string('linkedin')->default('https://linkedin.com/gravesfoods');
