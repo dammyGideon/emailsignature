@@ -104,7 +104,9 @@ h6{
   background-color: white;
   color: green
 }
-
+.footer{
+    margin-bottom: 50px;
+}
 </style>
 
 
@@ -115,7 +117,10 @@ h6{
     <div class="row">
        <div class="col-md-4"></div>
         <div class="col-md-4">
-            <img src="img/Gf.png" class="img-fluid rounded">
+            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096324/gflogo_header_ybrxxe.png"
+            class="img-fluid rounded">
+
+
              <p class="signature">Email Signature Generator <br/>
                 <span>Version: 1.0.1</span>
              </p>
@@ -128,22 +133,12 @@ h6{
                 <div class=" mt-4">
 
                     <select name="department">
-                        <optgroup>
                             <option>Select Department</option>
                             <option value="Marketing">Marketing</option>
                             <option value="Sales">Sales</option>
-
                             <option value="Transportation">Transportation</option>
                             <option value="Warehouse">Warehouse</option>
-
-                        </optgroup>
-
-                        <optgroup label="Information">
                             <option value="Information Technology">Information Technology</option>
-                        </optgroup>
-
-
-
                     </select>
 
                 </div>
@@ -154,9 +149,8 @@ h6{
                     <input type="email" name="email" placeholder="Email"     required>
                 </div>
                 <div class="btn-text-center mt-4">
-                     <button type="submit" class="btn">Generate</button>
+                     <button type="submit" onclick="generatee_button()" class="btn">Generate</button>
                 </div>
-
 
              </form>
         </div>
@@ -170,14 +164,16 @@ h6{
             <div class="col-md-3 desktop">
                 <h6>Desktop Email Signature</h6>
                 <div style="background-color: white; height: 40vh;">
+
                     @foreach ($data as $item)
                     <div id="select_txt">
                         <fieldset id="details">
-                           <span>{{ $item->full_name }}</span><br/>
+                           <span><b>{{ $item->full_name }}</b></span><br/>
                            <span>{{ $item->department }}</span><br/>
-                           <img src="/img/graves-logo.png" style="width:15vh" alt=""/> <br/>
-                           <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a></span><br/>
-                           <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a></span><br/>
+                           <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096325/gflogo_emailsig_y3qsj0.png"
+                           style="width:15vh" alt=""/> <br/>
+                           <span>{{ $item->first_no }}</a></span><br/>
+                           <span>{{ $item->second_no }}</span><br/>
                            <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
                            <span><a href="https://gravesfoods.com">{{ $item->website_link }}</a></span><br/>
 
@@ -185,26 +181,18 @@ h6{
 
                     </div>
                      <div>
-                        <a href="{{ $item->facebook }}">
-                            <i class="fa fa-facebook" style="font-size:25px;"></i>
-                        </a>
-                        <a href="{{ $item->twitter }}">
-                            <i class="fa fa-twitter" style="font-size:25px;"></i>
-                        </a>
-                        <a href="{{ $item->linkedin }}">
-                            <i class="fa fa-linkedin" style="font-size:25px;"></i>
-                        </a>
-                        <a href="{{ $item->youtube }}">
-                            <i class="fa fa-youtube" style="font-size:25px;"></i>
-                        </a>
+
+                            <i class="fa fa-facebook" style="font-size:25px; color:#EC1F27"></i>
+                            <i class="fa fa-twitter" style="font-size:25px; color:#EC1F27"></i>
+                            <i class="fa fa-linkedin" style="font-size:25px; color:#EC1F27"></i>
+                            <i class="fa fa-youtube" style="font-size:25px; color:#EC1F27"></i>
+
                      </div>
 
 
 
                 @endforeach
                 </div>
-
-
                  <div class="btn-text-center mt-4">
                      <button type="submit" class="btn"
                      onclick="copy_data(select_txt)">Copy</button>
@@ -222,17 +210,14 @@ h6{
                            <span>{{ $item->full_name }}</span><br/>
                            <span>{{ $item->department }}</span><br/>
                             <span>Graves Foods</span> <br/>
-                            <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a></span><br/>
-                            <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a></span><br/>
+                            <span>{{ $item->first_no }}</span><br/>
+                            <span>{{ $item->second_no }}</span><br/>
                             <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
                             <span><a href="https://gravesfoods.com">{{ $item->website_link }}</a></span><br/>
 
                         </fieldset>
 
                     </div>
-
-
-
 
                 @endforeach
                 </div>
@@ -244,7 +229,7 @@ h6{
                 </div>
             </div>
         </div>
-       <div class="col-md-4"></div>
+       <div class="footer col-md-4 mt-4" ></div>
 
 
 <!-- Modal -->
@@ -285,6 +270,9 @@ h6{
 
   toastr.success("Email Signature copied", "", {"iconClass": 'customer-info'});
 }
+function generatee_button(){
+    toastr.success("Email Signature Generated", "", {"iconClass": 'customer-info'});
+}
 </script>
 
 <script>
@@ -304,4 +292,6 @@ h6{
         });
 
 </script>
+
+
 </html>
