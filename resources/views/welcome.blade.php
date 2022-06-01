@@ -181,7 +181,7 @@ h6{
 
                     </div>
                      <div>
-
+                            
                             <i class="fa fa-facebook" style="font-size:25px; color:#EC1F27"></i>
                             <i class="fa fa-twitter" style="font-size:25px; color:#EC1F27"></i>
                             <i class="fa fa-linkedin" style="font-size:25px; color:#EC1F27"></i>
