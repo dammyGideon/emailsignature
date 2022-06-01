@@ -10,14 +10,16 @@
   <title>Email</title>
 
   <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/album/">
+  <!-- CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
 
 
-  <!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
   <style>
    *{
@@ -82,53 +84,28 @@ h6{
     height: 40%;
 }
 
-#snackbar {
-  visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  top: 30px;
-  font-size: 17px;
-}
 
-#snackbar.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {top: 0; opacity: 0;}
-  to {top: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {top: 0; opacity: 0;}
-  to {top: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-  from {top: 30px; opacity: 1;}
-  to {top: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {top: 30px; opacity: 1;}
-  to {top: 0; opacity: 0;}
-}
 .btn_style{
     border-radius: 12px;
     width: 50%;
 
 }
-  </style>
+
+#toast-container > .customer-error {
+  background-color: black;
+  color: whitesmoke
+}
+#toast-container > .customer-success {
+  background-color: white;
+  color: green
+}
+
+#toast-container > .customer-info {
+  background-color: white;
+  color: green
+}
+
+</style>
 
 
 </head>
@@ -149,13 +126,23 @@ h6{
                     <input type="text" name="full_name"  placeholder="Full Name"  required>
                 </div>
                 <div class=" mt-4">
+
                     <select name="department">
-                        <option></option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Sales">Sales</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Transportation">Transportation</option>
-                        <option value="Warehouse"></option>
+                        <optgroup>
+                            <option>Select Department</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Sales">Sales</option>
+
+                            <option value="Transportation">Transportation</option>
+                            <option value="Warehouse">Warehouse</option>
+
+                        </optgroup>
+
+                        <optgroup label="Information">
+                            <option value="Information Technology">Information Technology</option>
+                        </optgroup>
+
+
 
                     </select>
 
@@ -188,20 +175,28 @@ h6{
                         <fieldset id="details">
                            <span>{{ $item->full_name }}</span><br/>
                            <span>{{ $item->department }}</span><br/>
-                           <img src="/img/graves-logo.png" style="width:20vh" alt=""/> <br/>
-                           <span>{{ $item->first_no }}</span><br/>
-                           <span>{{ $item->second_no }}</span><br/>
-                           <span>{{ $item->email }}</span><br/>
-                           <span>{{ $item->website_link }}</span><br/>
+                           <img src="/img/graves-logo.png" style="width:15vh" alt=""/> <br/>
+                           <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a></span><br/>
+                           <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a></span><br/>
+                           <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
+                           <span><a href="https://gravesfoods.com">{{ $item->website_link }}</a></span><br/>
 
                         </fieldset>
 
                     </div>
                      <div>
-                        <a href="https://res.cloudinary.com/gravesfoods/image/upload/v1653673223/youtube-square-brands_wogpe3.svg" class="fa fa-facebook">F</a>
-                        <a href="#" class="fa fa-twitter">T</a>
-                        <a href="#" class="fa fa-linkedin">L</a>
-                        <a href="#" class="fa fa-youtube">Y</a>
+                        <a href="{{ $item->facebook }}">
+                            <i class="fa fa-facebook" style="font-size:25px;"></i>
+                        </a>
+                        <a href="{{ $item->twitter }}">
+                            <i class="fa fa-twitter" style="font-size:25px;"></i>
+                        </a>
+                        <a href="{{ $item->linkedin }}">
+                            <i class="fa fa-linkedin" style="font-size:25px;"></i>
+                        </a>
+                        <a href="{{ $item->youtube }}">
+                            <i class="fa fa-youtube" style="font-size:25px;"></i>
+                        </a>
                      </div>
 
 
@@ -228,10 +223,10 @@ h6{
                            <span>{{ $item->full_name }}</span><br/>
                            <span>{{ $item->department }}</span><br/>
                             <span>Graves Foods</span> <br/>
-                           <span>{{ $item->first_no }}</span><br/>
-                           <span>{{ $item->second_no }}</span><br/>
-                           <span>{{ $item->email }}</span><br/>
-                           <span>{{ $item->website_link }}</span><br/>
+                            <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a></span><br/>
+                            <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a></span><br/>
+                            <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
+                            <span><a href="https://gravesfoods.com">{{ $item->website_link }}</a></span><br/>
 
                         </fieldset>
 
@@ -261,7 +256,7 @@ h6{
         <div class="modal-body">
           <form action="/send_sms" method="POST">
             @csrf
-            <input type="number" name="phone_number" placeholder="Enter mobile number" required/>
+            <input type="text" name="phone_number" placeholder="Enter mobile number" required/>
             <div class="btn-text-center mt-4">
                 <button type="submit" class="btn">Send</button>
             </div>
@@ -277,9 +272,8 @@ h6{
 
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
 
 <script>
  function copy_data(containerid) {
@@ -290,12 +284,25 @@ h6{
   document.execCommand("copy");
   window.getSelection().removeAllRanges();
 
-  var x = document.getElementById("snackbar");
-  x.className = "show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  toastr.success("Email Signature copied", "", {"iconClass": 'customer-info'});
 }
+</script>
 
+<script>
+    $(document).ready(function() {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('error'))
+                toastr.error(
+                    '{{ Session::get('error') }}',''
+                    ,{"iconClass":"customer-error"});
+            @elseif(Session::has('success'))
+                toastr.success(
+                    '{{ Session::get('success') }}','success',
+                    {"iconClass":"customer-success"}
 
+                    );
+            @endif
+        });
 
 </script>
 </html>

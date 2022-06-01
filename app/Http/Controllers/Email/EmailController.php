@@ -69,16 +69,17 @@ class EmailController extends Controller
                 $client = new Client($account_sid, $auth_token);
                 $client->messages->create($phone_number,
                 [
-                    'from' => $twilio_number, 'body' => implode("\n ",$message)] );
+                    'from' => $twilio_number, 'body' =>trim(implode("\n ",$message))] );
 
                 DB::table('email_signatures')->delete();
-                return redirect()->back();
+                return redirect()->back()->with('success', 'Message sent successfully');
+
             }catch (Exception $e){
-                dd('Error',$e->getMessage());
                 // DB::table('email_signatures')->delete();
-                // return redirect()->back()->with('Error',$e->getMessage());
+                 return redirect()->back()->with('error','mobile number is not valid');
             }
 
         }
+
     }
 }
