@@ -210,7 +210,6 @@ h6{
                      onclick="copy_data(select_txt)">Copy</button>
                 </div>
 
-                <div id="snackbar">Copied Email Signature!..</div>
             </div>
 
             <div class="col-md-2"></div>
