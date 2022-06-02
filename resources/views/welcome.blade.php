@@ -107,6 +107,51 @@ h6{
 .footer{
     margin-bottom: 50px;
 }
+
+#snackbar {
+  visibility: hidden;
+  min-width: 350px;
+  margin-left: -175px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  right: 50%;
+  top: 30px;
+  font-size: 17px;
+
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 30px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 30px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
 </style>
 
 
@@ -179,15 +224,13 @@ h6{
 
                         </fieldset>
 
-                    </div>
-                     <div>
-                            
-                            <i class="fa fa-facebook" style="font-size:25px; color:#EC1F27"></i>
-                            <i class="fa fa-twitter" style="font-size:25px; color:#EC1F27"></i>
-                            <i class="fa fa-linkedin" style="font-size:25px; color:#EC1F27"></i>
-                            <i class="fa fa-youtube" style="font-size:25px; color:#EC1F27"></i>
+                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/facbook_fhziiu.png"  style="width:4vh" alt=""/>
+                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/twitter_rrbvuz.png"  style="width:4vh" alt=""/>
+                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/linkedin_hvrtvq.png"  style="width:4vh" alt=""/>
+                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/youtube_qpj56k.png"  style="width:4vh" alt=""/>
 
-                     </div>
+                    </div>
+
 
 
 
@@ -223,10 +266,12 @@ h6{
                 </div>
 
                  <div class="btn-text-center mt-4">
-                     <button type="submit" class="btn"
+                     <button type="submit" class="btn" onclick="snackbar()"
                      data-toggle="modal" data-target="#exampleModalCenter"
                      >Send to Mobile</button>
                 </div>
+
+
             </div>
         </div>
        <div class="footer col-md-4 mt-4" ></div>
@@ -238,6 +283,11 @@ h6{
       <div class="modal-content">
         <div class="modal-header"></div>
         <div class="modal-body">
+            <div id="snackbar">
+                Enter your mobile number
+                and tap “Send” to receive
+                the Mobile Email Signature via text <br/> message.
+            </div>
           <form action="/send_sms" method="POST">
             @csrf
             <input type="text" name="phone_number" placeholder="Enter mobile number" required/>
@@ -260,6 +310,15 @@ h6{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
 
 <script>
+
+ //snackbar
+
+ function snackbar(){
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 30000);
+ }
+
  function copy_data(containerid) {
   var range = document.createRange();
   range.selectNode(containerid); //changed here
@@ -284,7 +343,7 @@ function generatee_button(){
                     ,{"iconClass":"customer-error"});
             @elseif(Session::has('success'))
                 toastr.success(
-                    '{{ Session::get('success') }}','success',
+                    '<img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/check_k90mdz.png" style="margin-right:2%"/> {{ Session::get('success') }}','',
                     {"iconClass":"customer-success"}
 
                     );

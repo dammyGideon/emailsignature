@@ -72,7 +72,7 @@ class EmailController extends Controller
                     'from' => $twilio_number, 'body' =>trim(implode("\n ",$message))] );
 
                 DB::table('email_signatures')->delete();
-                return redirect()->back()->with('success', 'Message is being sent');
+                return redirect()->back()->with('success', 'Message Sent!');
 
             }catch (Exception $e){
                 // DB::table('email_signatures')->delete();
