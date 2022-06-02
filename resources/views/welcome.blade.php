@@ -173,7 +173,7 @@ a{
                 <span>Version: 1.0.1</span>
              </p>
 
-             <form method="post" action="/email">
+             <form method="post" action="/email" id="email">
                  @csrf
                 <div class="">
                     <input type="text" name="full_name"  placeholder="Full Name"  required>
@@ -218,7 +218,7 @@ a{
                         <fieldset id="details">
                            <span><b>{{ $item->full_name }}</b></span><br/>
                            <span>{{ $item->department }}</span><br/>
-                           <a href="">
+                           <a href="https://gravesfoods.com">
                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096325/gflogo_emailsig_y3qsj0.png"
                              style="width:15vh" alt=""/>
                             </a> <br/>
@@ -229,20 +229,20 @@ a{
 
                         </fieldset>
 
-                        <a class="" href="#" role="img">
+                        <a href="https://www.facebook.com/gravesmenumakerfoods">
                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/facbook_fhziiu.png"
                              style="width:4vh" alt=""/>
                         </a>
 
-                        <a href="#">
+                        <a href=" https://twitter.com/gravesfoods">
                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/twitter_rrbvuz.png"
                             style="width:4vh" alt=""/>
                         </a>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/gravesfoods/">
                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/linkedin_hvrtvq.png"
                             style="width:4vh" alt=""/>
                         </a>
-                       <a href="#">
+                       <a href="https://www.youtube.com/channel/UCmniDzDvYnxslGpdrMWM2Tg">
                         <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/youtube_qpj56k.png"
                         style="width:4vh" alt=""/>
                        </a>
@@ -367,6 +367,10 @@ function generatee_button(){
                     );
             @endif
         });
+
+    $(document).ready(function(){
+
+    })
 
 </script>
 
