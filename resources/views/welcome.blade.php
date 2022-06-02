@@ -152,6 +152,9 @@ h6{
   from {top: 30px; opacity: 1;}
   to {top: 0; opacity: 0;}
 }
+a{
+    text-decoration: none;
+}
 </style>
 
 
@@ -215,8 +218,10 @@ h6{
                         <fieldset id="details">
                            <span><b>{{ $item->full_name }}</b></span><br/>
                            <span>{{ $item->department }}</span><br/>
-                           <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096325/gflogo_emailsig_y3qsj0.png"
-                           style="width:15vh" alt=""/> <br/>
+                           <a href="">
+                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096325/gflogo_emailsig_y3qsj0.png"
+                             style="width:15vh" alt=""/>
+                            </a> <br/>
                            <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a> Direct</span><br/>
                             <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a> Main</span><br/>
                            <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
@@ -224,10 +229,23 @@ h6{
 
                         </fieldset>
 
-                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/facbook_fhziiu.png"  style="width:4vh" alt=""/>
-                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/twitter_rrbvuz.png"  style="width:4vh" alt=""/>
-                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/linkedin_hvrtvq.png"  style="width:4vh" alt=""/>
-                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/youtube_qpj56k.png"  style="width:4vh" alt=""/>
+                        <a class="" href="#" role="img">
+                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/facbook_fhziiu.png"
+                             style="width:4vh" alt=""/>
+                        </a>
+
+                        <a href="#">
+                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/twitter_rrbvuz.png"
+                            style="width:4vh" alt=""/>
+                        </a>
+                        <a href="#">
+                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/linkedin_hvrtvq.png"
+                            style="width:4vh" alt=""/>
+                        </a>
+                       <a href="#">
+                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/youtube_qpj56k.png"
+                        style="width:4vh" alt=""/>
+                       </a>
 
                     </div>
 
@@ -327,10 +345,10 @@ h6{
   document.execCommand("copy");
   window.getSelection().removeAllRanges();
 
-  toastr.success("Email Signature copied", "", {"iconClass": 'customer-info'});
+  toastr.success('<img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/check_k90mdz.png" style="margin-right:2%"/> Email Signature copied', "", {"iconClass": 'customer-info'});
 }
 function generatee_button(){
-    toastr.success("Email Signature Generated", "", {"iconClass": 'customer-info'});
+    toastr.success('<img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/check_k90mdz.png" style="margin-right:2%"/> Email Signature Generated', "", {"iconClass": 'customer-info'});
 }
 </script>
 

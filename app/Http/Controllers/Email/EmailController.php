@@ -24,14 +24,15 @@ class EmailController extends Controller
 
        $check = new EmailSignature();
        if(empty($check)){
-        $result= EmailSignature::insert($data);
+        EmailSignature::insert($data);
+        return redirect()->back('');
        }else{
            DB::table('email_signatures')->delete();
            $result= EmailSignature::insert($data);
        }
 
 
-       return redirect()->back();
+       return redirect()->back()->with('success', 'Message Sent!');
 
     }
 
