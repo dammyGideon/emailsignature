@@ -172,7 +172,7 @@ a{
 
 
              <p class="signature">Email Signature Generator <br/>
-                <span>Version: 1.0.1</span>
+                <span>Version: 1.0.130</span>
              </p>
 
              <form method="post" action="/email" id="email">
@@ -325,8 +325,8 @@ a{
         <div class="modal-body">
             <div id="snackbar">
                 Enter your mobile number
-                and tap “Send” to receive
-                the Mobile Email Signature via text <br/> message.
+                and tap Send to receive
+                the Mobile Email Signature via text message.
             </div>
           <form action="/send_sms" method="POST">
             @csrf
