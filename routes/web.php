@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-
     return view('welcome');
 });
 Route::post('/email',[EmailController::class,'send']);
