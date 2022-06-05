@@ -8,59 +8,44 @@ use App\Models\EmailSignature;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Twilio\Rest\Client;
+use Illuminate\Support\Facades\Session;
 
 class EmailController extends Controller
 {
     //
 
     public function send(Request $request){
+        $first_no= '(573) 761-5038';
+        $second_no='(573) 893-3000';
+        $website_link='gravesfoods.com';
 
-        $data=[
-            'full_name'=>$request->input('full_name'),
-            'department'=>$request->input('department'),
-            'direct'=>$request->input('direct'),
-            'email'=>$request->input('email')
-        ];
+        Session::put('user',
+                    [
+                    'full_name' =>$request->input('full_name'),
+                    'department'=>$request->input('department'),
+                    'direct'    =>$request->input('direct'),
+                    'email'     =>$request->input('email'),
+                    'first_no'  =>$first_no,
+                    'second_no' =>$second_no,
+                    'website_link'=>$website_link,
+                ]);
 
-       $check = new EmailSignature();
-       if(empty($check)){
-        EmailSignature::insert($data);
-        return redirect()->back('');
-       }else{
-           DB::table('email_signatures')->delete();
-           $result= EmailSignature::insert($data);
-       }
-
-
-       return redirect()->back()->with('success', 'Message Sent!');
+        return redirect()->back()->with('success', 'Message Sent!');
 
     }
 
     public function sendEmail(Request $request){
 
-        $phone_number=$request->input('phone_number');
+            $phone_number=$request->input('phone_number');
 
-
-        $data = DB::table('email_signatures')->get();
-        foreach($data as $response){
-            $full_name=$response->full_name;
-            $dept     =$response->department;
+            $full_name=Session::get('user')['full_name'];
+            $dept     =Session::get('user')['department'];
             $name_of_companies="Graves Foods";
-            $first_no =$response->first_no;
-            $second_no=$response->second_no;
-            $email = $response->email;
-            $website_link=$response->website_link;
-
-
-            $message=array(
-                "full_name"=>$full_name,
-                "department"=>$dept,
-                "name_of_company"=>$name_of_companies,
-                "first_number" => $first_no,
-                "second_number"=>$second_no,
-                "email"=>$email,
-                "website"=>$website_link);
-
+            $first_no =Session::get('user')['first_no'];
+            $second_no=Session::get('user')['second_no'];
+            $email = Session::get('user')['email'];
+            $website_link=Session::get('user')['website_link'];
+            $data=[$full_name,$dept,$name_of_companies,$first_no,$second_no,$email,$website_link];
              try {
 
 
@@ -70,17 +55,15 @@ class EmailController extends Controller
                 $client = new Client($account_sid, $auth_token);
                 $client->messages->create($phone_number,
                 [
-                    'from' => $twilio_number, 'body' =>trim(implode("\n ",$message))] );
-
-                DB::table('email_signatures')->delete();
-                return redirect()->back()->with('success', 'Message Sent!');
+                    'from' => $twilio_number, 'body' =>trim(implode("\n",$data))] );
+                     return redirect()->back()->with('success', 'Message Sent!');
 
             }catch (Exception $e){
-                // DB::table('email_signatures')->delete();
+
                  return redirect()->back()->with('error','mobile number is not valid');
             }
 
         }
 
-    }
+
 }

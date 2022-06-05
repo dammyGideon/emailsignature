@@ -169,6 +169,8 @@ a{
             class="img-fluid rounded" style="align-content: center">
 
 
+
+
              <p class="signature">Email Signature Generator <br/>
                 <span>Version: 1.0.1</span>
              </p>
@@ -213,46 +215,55 @@ a{
                 <h6>Desktop Email Signature</h6>
                 <div style="background-color: white; height: 40vh;">
 
-                    @foreach ($data as $item)
+
                     <div id="select_txt">
                         <fieldset id="details">
-                           <span><b>{{ $item->full_name }}</b></span><br/>
-                           <span>{{ $item->department }}</span><br/>
+                           <span><b> {{Session::get('user')['full_name']}}</b></span><br/>
+                           <span> {{Session::get('user')['department']}}</span><br/>
                            <a href="https://gravesfoods.com">
                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096325/gflogo_emailsig_y3qsj0.png"
                              style="width:15vh" alt=""/>
                             </a> <br/>
-                           <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a> Direct</span><br/>
-                            <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a> Main</span><br/>
-                           <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
-                           <span><a href="https://gravesfoods.com">{{ $item->website_link }}</a></span><br/>
+                            <span>
+                                    <a href="{{Session::get('user')['first_no']}}">
+                                    {{Session::get('user')['first_no']}}</a> Direct
+                                </span>
+                            <br/>
+
+                            <span>
+                                <a href="{{Session::get('user')['second_no']}}">
+                                    {{Session::get('user')['second_no']}}</a> Main</span><br/>
+                           <span>
+                               <a href="{{Session::get('user')['email']}}">
+                                {{Session::get('user')['email']}}</a></span><br/>
+                           <span>
+                               <a href="https://gravesfoods.com">
+                               {{Session::get('user')['website_link']}}
+                            </a></span><br/>
 
                         </fieldset>
 
-                        <a href="https://www.facebook.com/gravesmenumakerfoods">
+                        <a href="https://www.facebook.com/gravesmenumakerfoods" style="text-decoration: none!important; cursor: pointer;">
                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/facbook_fhziiu.png"
                              style="width:4vh" alt=""/>
                         </a>
 
-                        <a href=" https://twitter.com/gravesfoods">
+                        <a href=" https://twitter.com/gravesfoods" style="text-decoration: none!important; cursor: pointer;">
                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/twitter_rrbvuz.png"
                             style="width:4vh" alt=""/>
                         </a>
-                        <a href="https://www.linkedin.com/company/gravesfoods/">
+                        <a href="https://www.linkedin.com/company/gravesfoods/" style="text-decoration: none!important; cursor: pointer;">
                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/linkedin_hvrtvq.png"
                             style="width:4vh" alt=""/>
                         </a>
-                       <a href="https://www.youtube.com/channel/UCmniDzDvYnxslGpdrMWM2Tg">
+                       <a href="https://www.youtube.com/channel/UCmniDzDvYnxslGpdrMWM2Tg" style="text-decoration: none!important; cursor: pointer;">
                         <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/youtube_qpj56k.png"
                         style="width:4vh" alt=""/>
                        </a>
 
+
                     </div>
 
-
-
-
-                @endforeach
                 </div>
                  <div class="btn-text-center mt-4">
                      <button type="submit" class="btn"
@@ -265,22 +276,33 @@ a{
             <div class="col-md-3 desktop">
                 <h6>Mobile Email Signature</h6>
                 <div class="" style="background-color: white; height: 40vh;">
-                    @foreach ($data as $item)
                     <div>
                         <fieldset>
-                           <span>{{ $item->full_name }}</span><br/>
-                           <span>{{ $item->department }}</span><br/>
+                            <span><b> {{Session::get('user')['full_name']}}</b></span><br/>
+                            <span> {{Session::get('user')['department']}}</span><br/>
                             <span>Graves Foods</span> <br/>
-                            <span><a href="{{ $item->first_no }}">{{ $item->first_no }}</a> Direct</span><br/>
-                            <span><a href="{{ $item->second_no }}">{{ $item->second_no }}</a> Main</span><br/>
-                            <span><a href="{{ $item->email }}">{{ $item->email }}</a></span><br/>
-                            <span><a href="https://gravesfoods.com">{{ $item->website_link }}</a></span><br/>
+
+                            <span>
+                                <a href="{{Session::get('user')['first_no']}}">
+                                {{Session::get('user')['first_no']}}</a> Direct
+                            </span>
+                             <br/>
+                            <span>
+                                <a href="{{Session::get('user')['second_no']}}">
+                                    {{Session::get('user')['second_no']}}</a> Main</span><br/>
+                           <span>
+                               <a href="{{Session::get('user')['email']}}">
+                                {{Session::get('user')['email']}}</a></span><br/>
+                           <span>
+                               <a href="https://gravesfoods.com">
+                               {{Session::get('user')['website_link']}}
+                            </a></span><br/>
+
+
 
                         </fieldset>
 
                     </div>
-
-                @endforeach
                 </div>
 
                  <div class="btn-text-center mt-4">
@@ -368,9 +390,27 @@ function generatee_button(){
             @endif
         });
 
-    $(document).ready(function(){
 
-    })
+        $('#email').submit(function(){
+            e.preventDefault();
+
+            $.ajax({
+                url:$form.atr('action'),
+                data:$(this).serialize(),
+                dataType: 'json'
+
+                success: function(data){
+                    alert('worked')
+                },
+
+                error: function (data){
+                    alert('nothing dey')
+                }
+
+            })
+
+        })
+
 
 </script>
 

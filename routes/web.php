@@ -3,6 +3,7 @@
 use App\Http\Controllers\Email\EmailController;
 use Illuminate\Support\Facades\Route;
 use App\Models\EmailSignature;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,8 @@ use App\Models\EmailSignature;
 */
 
 Route::get('/', function () {
-    $data=EmailSignature::get();
-    return view('welcome',['data'=>$data]);
+
+    return view('welcome');
 });
 Route::post('/email',[EmailController::class,'send']);
 Route::post('/send_sms',[EmailController::class,'sendEmail']);
