@@ -218,6 +218,10 @@ a{
 
                     <div id="select_txt">
                         <fieldset id="details">
+
+                            @if(Session::has('user'))
+
+
                            <span><b> {{Session::get('user')['full_name']}}</b></span><br/>
                            <span> {{Session::get('user')['department']}}</span><br/>
                            <a href="https://gravesfoods.com">
@@ -261,7 +265,7 @@ a{
                         style="width:4vh" alt=""/>
                        </a>
 
-
+                       @endif
                     </div>
 
                 </div>
@@ -277,7 +281,9 @@ a{
                 <h6>Mobile Email Signature</h6>
                 <div class="" style="background-color: white; height: 40vh;">
                     <div>
+
                         <fieldset>
+                        @if(Session::has('user'))
                             <span><b> {{Session::get('user')['full_name']}}</b></span><br/>
                             <span> {{Session::get('user')['department']}}</span><br/>
                             <span>Graves Foods</span> <br/>
@@ -299,7 +305,7 @@ a{
                             </a></span><br/>
 
 
-
+                        @endif
                         </fieldset>
 
                     </div>
@@ -328,6 +334,7 @@ a{
                 and tap Send to receive
                 the Mobile Email Signature via text message.
             </div>
+
           <form action="/send_sms" method="POST">
             @csrf
             <input type="text" name="phone_number" placeholder="Enter mobile number" required/>
