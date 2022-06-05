@@ -7,7 +7,8 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.72.0">
-  <title>Email</title>
+  <link rel="icon"  href="https://res.cloudinary.com/gravesfoods/image/upload/v1654463012/medium-icon-graves-foods_gq41pi.png"/>
+  <title>Email Signature Generator - Graves Foods</title>
 
   <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/album/">
   <!-- CSS -->
@@ -22,10 +23,11 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
   <style>
+
+
    *{
     margin: 0;
     padding:0;
-
 }
 
 body{
@@ -128,8 +130,8 @@ h6{
 
 #snackbar.show {
   visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  -webkit-animation: fadein 0.10s;
+  animation: fadein 0.10s;
 
 }
 
@@ -143,211 +145,217 @@ h6{
   to {top: 30px; opacity: 1;}
 }
 
-@-webkit-keyframes fadeout {
-  from {top: 30px; opacity: 1;}
-  to {top: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {top: 30px; opacity: 1;}
-  to {top: 0; opacity: 0;}
-}
 a{
     text-decoration: none;
 }
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+
 </style>
 
 
 </head>
 
 <body>
+<div class="container_fluid">
 
     <div class="row">
-       <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654112559/gflogo_header2_fdhejj.png"
-            class="img-fluid rounded" style="align-content: center">
-
-
-
-
-             <p class="signature">Email Signature Generator <br/>
-                <span>Version: 1.0.130</span>
-             </p>
-
-             <form method="post" action="/email" id="email">
-                 @csrf
-                <div class="">
-                    <input type="text" name="full_name"  placeholder="Full Name"  required>
-                </div>
-                <div class=" mt-4">
-
-                    <select name="department">
-                            <option>Select Department</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="Sales">Sales</option>
-                            <option value="Transportation">Transportation</option>
-                            <option value="Warehouse">Warehouse</option>
-                            <option value="Information Technology">Information Technology</option>
-                    </select>
-
-                </div>
-                <div class=" mt-4">
-                    <input type="text" name="direct"  placeholder="Direct#"    required>
-                </div>
-                <div class=" mt-4">
-                    <input type="email" name="email" placeholder="Email"     required>
-                </div>
-                <div class="btn-text-center mt-4">
-                     <button type="submit" onclick="generatee_button()" class="btn">Generate</button>
-                </div>
-
-             </form>
-        </div>
-
-        <div class="horizontal mt-4">
-            <hr/>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-3 desktop">
-                <h6>Desktop Email Signature</h6>
-                <div style="background-color: white; height: 40vh;">
-
-
-                    <div id="select_txt">
-                        <fieldset id="details">
-
-                            @if(Session::has('user'))
-
-
-                           <span><b> {{Session::get('user')['full_name']}}</b></span><br/>
-                           <span> {{Session::get('user')['department']}}</span><br/>
-                           <a href="https://gravesfoods.com">
-                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096325/gflogo_emailsig_y3qsj0.png"
-                             style="width:15vh" alt=""/>
-                            </a> <br/>
-                            <span>
-                                    <a href="{{Session::get('user')['first_no']}}">
-                                    {{Session::get('user')['first_no']}}</a> Direct
-                                </span>
-                            <br/>
-
-                            <span>
-                                <a href="{{Session::get('user')['second_no']}}">
-                                    {{Session::get('user')['second_no']}}</a> Main</span><br/>
-                           <span>
-                               <a href="{{Session::get('user')['email']}}">
-                                {{Session::get('user')['email']}}</a></span><br/>
-                           <span>
-                               <a href="https://gravesfoods.com">
-                               {{Session::get('user')['website_link']}}
-                            </a></span><br/>
-
-                        </fieldset>
-
-                        <a href="https://www.facebook.com/gravesmenumakerfoods" style="text-decoration: none!important; cursor: pointer;">
-                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/facbook_fhziiu.png"
-                             style="width:4vh" alt=""/>
-                        </a>
-
-                        <a href=" https://twitter.com/gravesfoods" style="text-decoration: none!important; cursor: pointer;">
-                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/twitter_rrbvuz.png"
-                            style="width:4vh" alt=""/>
-                        </a>
-                        <a href="https://www.linkedin.com/company/gravesfoods/" style="text-decoration: none!important; cursor: pointer;">
-                            <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/linkedin_hvrtvq.png"
-                            style="width:4vh" alt=""/>
-                        </a>
-                       <a href="https://www.youtube.com/channel/UCmniDzDvYnxslGpdrMWM2Tg" style="text-decoration: none!important; cursor: pointer;">
-                        <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/youtube_qpj56k.png"
-                        style="width:4vh" alt=""/>
-                       </a>
-
-                       @endif
-                    </div>
-
-                </div>
+        <div class="col-md-4"></div>
+         <div class="col-md-4">
+             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654112559/gflogo_header2_fdhejj.png"
+                  style="display: block;
+                         margin-left: auto;
+                         margin-right: auto;
+                         width: 100%;
+                     ";>
+ 
+              <p class="signature">Email Signature Generator <br/>
+                 <span>Version: 1.0.138</span>
+              </p>
+ 
+              <form method="post" action="/email" id="email">
+                  @csrf
+                 <div class="">
+                     <input type="text" name="full_name"  placeholder="Full Name"  required>
+                 </div>
+                 <div class=" mt-4">
+ 
+                     <select name="department">
+                             <option>Select Department</option>
+                             <option value="Marketing">Marketing</option>
+                             <option value="Sales">Sales</option>
+                             <option value="Transportation">Transportation</option>
+                             <option value="Warehouse">Warehouse</option>
+                             <option value="Information Technology">Information Technology</option>
+                     </select>
+ 
+                 </div>
+                 <div class=" mt-4">
+                     <input type="text" name="direct"  placeholder="Direct#"    required>
+                 </div>
+                 <div class=" mt-4">
+                     <input type="email" name="email" placeholder="Email"     required>
+                 </div>
                  <div class="btn-text-center mt-4">
-                     <button type="submit" class="btn"
-                     onclick="copy_data(select_txt)">Copy</button>
-                </div>
-
-            </div>
-
-            <div class="col-md-2"></div>
-            <div class="col-md-3 desktop">
-                <h6>Mobile Email Signature</h6>
-                <div class="" style="background-color: white; height: 40vh;">
-                    <div>
-
-                        <fieldset>
-                        @if(Session::has('user'))
+                      <button type="submit" onclick="generatee_button()" class="btn">Generate</button>
+                 </div>
+ 
+              </form>
+         </div>
+ 
+         <div class="horizontal mt-4">
+             <hr/>
+         </div>
+ 
+         <div class="row">
+             <div class="col-md-2"></div>
+             <div class="col-md-3 desktop">
+                 <h6>Desktop Email Signature</h6>
+                 <div style="background-color: white; height: 40vh;">
+ 
+                     <div id="select_txt">
+                         <fieldset id="details">
+ 
+                             @if(Session::has('user'))
+ 
+ 
                             <span><b> {{Session::get('user')['full_name']}}</b></span><br/>
                             <span> {{Session::get('user')['department']}}</span><br/>
-                            <span>Graves Foods</span> <br/>
-
-                            <span>
-                                <a href="{{Session::get('user')['first_no']}}">
-                                {{Session::get('user')['first_no']}}</a> Direct
-                            </span>
+                            <a href="https://gravesfoods.com">
+                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654096325/gflogo_emailsig_y3qsj0.png"
+                              style="width:15vh" alt=""/>
+                             </a> <br/>
+                             <span>
+                                     <a href="{{Session::get('user')['first_no']}}">
+                                     {{Session::get('user')['first_no']}}</a> Direct
+                                 </span>
                              <br/>
+ 
+                             <span>
+                                 <a href="{{Session::get('user')['second_no']}}">
+                                     {{Session::get('user')['second_no']}}</a> Main</span><br/>
                             <span>
-                                <a href="{{Session::get('user')['second_no']}}">
-                                    {{Session::get('user')['second_no']}}</a> Main</span><br/>
-                           <span>
-                               <a href="{{Session::get('user')['email']}}">
-                                {{Session::get('user')['email']}}</a></span><br/>
-                           <span>
-                               <a href="https://gravesfoods.com">
-                               {{Session::get('user')['website_link']}}
-                            </a></span><br/>
-
-
+                                <a href="{{Session::get('user')['email']}}">
+                                 {{Session::get('user')['email']}}</a></span><br/>
+                            <span>
+                                <a href="https://gravesfoods.com">
+                                {{Session::get('user')['website_link']}}
+                             </a></span><br/>
+ 
+                         </fieldset>
+ 
+                         <a href="https://www.facebook.com/gravesmenumakerfoods" style="text-decoration: none!important; cursor: pointer;">
+                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/facbook_fhziiu.png"
+                              style="width:4vh" alt=""/>
+                         </a>
+ 
+                         <a href=" https://twitter.com/gravesfoods" style="text-decoration: none!important; cursor: pointer;">
+                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/twitter_rrbvuz.png"
+                             style="width:4vh" alt=""/>
+                         </a>
+                         <a href="https://www.linkedin.com/company/gravesfoods/" style="text-decoration: none!important; cursor: pointer;">
+                             <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/linkedin_hvrtvq.png"
+                             style="width:4vh" alt=""/>
+                         </a>
+                        <a href="https://www.youtube.com/channel/UCmniDzDvYnxslGpdrMWM2Tg" style="text-decoration: none!important; cursor: pointer;">
+                         <img src="https://res.cloudinary.com/gravesfoods/image/upload/v1654119275/youtube_qpj56k.png"
+                         style="width:4vh" alt=""/>
+                        </a>
+ 
                         @endif
-                        </fieldset>
+                     </div>
+ 
+                 </div>
+                  <div class="btn-text-center mt-4">
+                      <button type="submit" class="btn"
+                      onclick="copy_data(select_txt)">Copy</button>
+                 </div>
+ 
+             </div>
+ 
+             <div class="col-md-2"></div>
+             <div class="col-md-3 desktop">
+                 <h6>Mobile Email Signature</h6>
+                 <div class="" style="background-color: white; height: 40vh;">
+                     <div>
+ 
+                         <fieldset>
+                         @if(Session::has('user'))
+                             <span><b> {{Session::get('user')['full_name']}}</b></span><br/>
+                             <span> {{Session::get('user')['department']}}</span><br/>
+                             <span>Graves Foods</span> <br/>
+ 
+                             <span>
+                                 <a href="{{Session::get('user')['first_no']}}">
+                                 {{Session::get('user')['first_no']}}</a> Direct
+                             </span>
+                              <br/>
+                             <span>
+                                 <a href="{{Session::get('user')['second_no']}}">
+                                     {{Session::get('user')['second_no']}}</a> Main</span><br/>
+                            <span>
+                                <a href="{{Session::get('user')['email']}}">
+                                 {{Session::get('user')['email']}}</a></span><br/>
+                            <span>
+                                <a href="https://gravesfoods.com">
+                                {{Session::get('user')['website_link']}}
+                             </a></span><br/>
+ 
+ 
+                         @endif
+                         </fieldset>
+ 
+                     </div>
+                 </div>
+ 
+                  <div class="btn-text-center mt-4">
+                      <button type="submit" class="btn" onclick="snackbar()"
+                      data-toggle="modal" data-target="#exampleModalCenter"
+                      >Send to Mobile</button>
+                 </div>
+ 
+ 
+             </div>
+         </div>
+        <div class="footer col-md-4 mt-4" ></div>
+ 
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+         <div class="modal-header"></div>
+         <div class="modal-body">
+             <div id="snackbar">
+                 Enter your mobile number
+                 and tap Send to receive
+                 the Mobile Email Signature via text message.
+             </div>
+ 
+           <form action="/send_sms" method="POST">
+             @csrf
+             <input type="text" name="phone_number" placeholder="Enter mobile number" required/>
+             <div class="btn-text-center mt-4">
+                 <button type="submit" class="btn">Send</button>
+             </div>
+           </form>
+         </div>
+ 
+       </div>
+     </div>
+   </div>
+ 
 
-                    </div>
-                </div>
-
-                 <div class="btn-text-center mt-4">
-                     <button type="submit" class="btn" onclick="snackbar()"
-                     data-toggle="modal" data-target="#exampleModalCenter"
-                     >Send to Mobile</button>
-                </div>
-
-
-            </div>
-        </div>
-       <div class="footer col-md-4 mt-4" ></div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header"></div>
-        <div class="modal-body">
-            <div id="snackbar">
-                Enter your mobile number
-                and tap Send to receive
-                the Mobile Email Signature via text message.
-            </div>
-
-          <form action="/send_sms" method="POST">
-            @csrf
-            <input type="text" name="phone_number" placeholder="Enter mobile number" required/>
-            <div class="btn-text-center mt-4">
-                <button type="submit" class="btn">Send</button>
-            </div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
+</div>
+    
 
 
 

@@ -19,6 +19,7 @@ class EmailController extends Controller
         $second_no='(573) 893-3000';
         $website_link='gravesfoods.com';
 
+
         Session::put('user',
                     [
                     'full_name' =>$request->input('full_name'),
@@ -56,7 +57,9 @@ class EmailController extends Controller
                 $client->messages->create($phone_number,
                 [
                     'from' => $twilio_number, 'body' =>trim(implode("\n",$data))] );
+                      session()->forget('user');
                      return redirect()->back()->with('success', 'Message Sent!');
+
 
             }catch (Exception $e){
 
